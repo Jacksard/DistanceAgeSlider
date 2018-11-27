@@ -42,12 +42,9 @@ class App extends Component {
     distance: 6000
   };
 
-
   // calculate the distance to each person in the array, and assign the value to person object
   componentDidMount() {
-
     this.setState({ persons: keyUpdateHandler(this.state.persons, this.state.defaultLocation) })
-
   }
 
   filterMin = event => {
@@ -73,7 +70,6 @@ class App extends Component {
   onDistanceChange = value => {
     console.log(value);
     this.setState({ distance: value });
-  
     return value;
   };
 
@@ -90,31 +86,14 @@ class App extends Component {
       fontSize: "1em"
     };
 
-    // passing the persons array to a function to calculate each distance
-
-    /*     this.setState({ distanceSort: keyUpdateHandler(this.state.persons, this.state.defaultLocation) });
-        console.log("sorted2:" + this.state.distanceSort[1])
-     */
-
-    let example1 = this.state.distanceSort.filter(x => x.calculated < this.state.distance);
-    console.log("test pp :" + example1);
-
     let arr1 = this.state.persons.filter(p => p.calculated <= this.state.distance);
-
     let arr = arr1.filter(y => y.age > this.state.min && y.age < this.state.max);
-
     const listItems = arr.map(d => (<li key={d.name}> {d.name} {d.age}- Distance: <b> {d.calculated}
     </b> km
       </li>
     ));
 
-    /*    const listItems = arr.map(d => (<li key={d.name}> {d.name} {d.age} - Distance: <b>{" "}{}{distance(d.coordinates.latitude, d.coordinates.longitude, this.state.defaultLocation.latitude,
-         this.state.defaultLocation.longitude
-       ).toFixed(1)}
-       </b>{" "}
-         km
-         </li>
-       )); */
+ 
     console.log(arr);
 
     return (
